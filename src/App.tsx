@@ -1,4 +1,5 @@
 import Reveal from "./components/Reveal";
+import { WhatsAppIcon, InstagramIcon, MailIcon } from "./components/icons";
 import heroClinic from "./assets/hero-clinic.jpg";
 import resultado01 from "./assets/resultado-01.jpg";
 import resultado02 from "./assets/resultado-02.jpg";
@@ -9,8 +10,23 @@ import resultado06 from "./assets/resultado-06.jpg";
 import resultado07 from "./assets/resultado-07.jpg";
 import resultado08 from "./assets/resultado-08.jpg";
 import resultado09 from "./assets/resultado-09.jpg";
+import resultado10 from "./assets/resultado-10.jpg";
+import resultado11 from "./assets/resultado-11.jpg";
+import resultado12 from "./assets/resultado-12.jpg";
+import resultado13 from "./assets/resultado-13.jpg";
+import resultado14 from "./assets/resultado-14.jpg";
 
 const INSTAGRAM_URL = "https://www.instagram.com/drajulianeklobukoski";
+const WHATSAPP_URL = "https://wa.me/5515991424605";
+const EMAIL_URL = "mailto:juhklobukoski@gmail.com";
+const EMAIL_LABEL = "juhklobukoski@gmail.com";
+const WHATSAPP_LABEL = "(15) 99142-4605";
+
+const contactLinks = [
+  { label: "WhatsApp", value: WHATSAPP_LABEL, href: WHATSAPP_URL, Icon: WhatsAppIcon },
+  { label: "Instagram", value: "@drajulianeklobukoski", href: INSTAGRAM_URL, Icon: InstagramIcon },
+  { label: "E-mail", value: EMAIL_LABEL, href: EMAIL_URL, Icon: MailIcon },
+];
 
 const marqueeRowTop = [
   { src: resultado01, alt: "Harmonização facial — antes e depois" },
@@ -26,6 +42,14 @@ const marqueeRowBottom = [
   { src: resultado08, alt: "Preenchimento labial — antes e depois" },
   { src: resultado09, alt: "Rejuvenescimento — antes e depois" },
   { src: resultado03, alt: "Definição facial — antes e depois" },
+];
+
+const marqueeRowNew = [
+  { src: resultado10, alt: "Perfil facial suavizado — antes e depois" },
+  { src: resultado11, alt: "Harmonização de perfil — antes e depois" },
+  { src: resultado12, alt: "Rejuvenescimento facial — antes e depois" },
+  { src: resultado13, alt: "Harmonização facial — antes e depois" },
+  { src: resultado14, alt: "Uniformização de pele — antes e depois" },
 ];
 
 const procedures = [
@@ -148,7 +172,7 @@ export default function App() {
             </a>
           </nav>
           <a
-            href={INSTAGRAM_URL}
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
             className="rounded-full border border-gold/40 px-4 py-2 text-[11px] uppercase tracking-[0.2em] text-gold transition-all hover:bg-gold hover:text-primary-foreground"
@@ -179,7 +203,7 @@ export default function App() {
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
             <a
-              href={INSTAGRAM_URL}
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
               className="glow-gold rounded-full bg-gold px-8 py-3.5 text-xs uppercase tracking-[0.24em] text-primary-foreground transition-transform duration-300 hover:scale-[1.04]"
@@ -209,6 +233,7 @@ export default function App() {
 
         <MarqueeRow images={marqueeRowTop} duration={80} />
         <MarqueeRow images={marqueeRowBottom} duration={95} reverse />
+        <MarqueeRow images={marqueeRowNew} duration={88} />
 
         <Reveal className="mx-auto mt-10 max-w-6xl px-6">
           <p className="max-w-lg text-sm leading-relaxed text-muted-foreground">
@@ -294,23 +319,51 @@ export default function App() {
               Agende sua avaliação e receba um plano feito para o seu rosto.
             </p>
             <a
-              href={INSTAGRAM_URL}
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
               className="glow-gold mt-10 inline-block rounded-full bg-gold px-10 py-4 text-xs uppercase tracking-[0.24em] text-primary-foreground transition-transform duration-300 hover:scale-[1.04]"
             >
               Falar com a equipe
             </a>
+
+            <div className="mt-12 flex items-center justify-center gap-6">
+              {contactLinks.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
+                  aria-label={label}
+                  title={label}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 text-gold transition-all hover:bg-gold hover:text-primary-foreground"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
           </Reveal>
         </div>
       </section>
 
       <footer className="border-t border-border py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-[11px] uppercase tracking-[0.2em] text-muted-foreground sm:flex-row">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-[11px] uppercase tracking-[0.2em] text-muted-foreground sm:flex-row">
           <span>Dra. Juliane Klobukoski</span>
-          <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="hover:text-gold">
-            @drajulianeklobukoski
-          </a>
+          <div className="flex items-center gap-5">
+            {contactLinks.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
+                aria-label={label}
+                title={label}
+                className="transition-colors hover:text-gold"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
         </div>
       </footer>
     </main>
