@@ -333,7 +333,7 @@ export default function App() {
               <img
                 src={perfil}
                 alt="Dra. Juliane Klobukoski"
-                className="h-20 w-20 shrink-0 rounded-full border border-gold/40 object-cover object-top"
+                className="h-20 w-20 shrink-0 rounded-full border border-gold/40 object-cover"
               />
               <h2 className="text-2xl font-semibold leading-tight sm:text-4xl">Dra. Juliane Klobukoski</h2>
             </div>
