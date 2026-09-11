@@ -1,6 +1,12 @@
 import Reveal from "./components/Reveal";
+import Slideshow from "./components/Slideshow";
 import { WhatsAppIcon, InstagramIcon, MailIcon } from "./components/icons";
 import heroClinic from "./assets/hero-clinic.jpg";
+import perfil from "./assets/perfil.jpg";
+import sobre01 from "./assets/sobre-01.jpg";
+import sobre02 from "./assets/sobre-02.jpg";
+import sobre03 from "./assets/sobre-03.jpg";
+import sobre04 from "./assets/sobre-04.jpg";
 import resultado01 from "./assets/resultado-01.jpg";
 import resultado02 from "./assets/resultado-02.jpg";
 import resultado03 from "./assets/resultado-03.jpg";
@@ -83,6 +89,13 @@ const procedures = [
     title: "Protocolos de Pele",
     text: "Skinbooster, peelings e cuidado clínico para textura, viço e uniformidade.",
   },
+];
+
+const sobreImages = [
+  { src: sobre01, alt: "Dra. Juliane Klobukoski em Madri" },
+  { src: sobre02, alt: "Dra. Juliane Klobukoski em Zurique" },
+  { src: sobre03, alt: "Dra. Juliane Klobukoski no Coliseu, Roma" },
+  { src: sobre04, alt: "Dra. Juliane Klobukoski em Paris" },
 ];
 
 const methodSteps = [
@@ -169,6 +182,9 @@ export default function App() {
             </a>
             <a href="#metodo" className="transition-colors hover:text-gold">
               Método
+            </a>
+            <a href="#sobre" className="transition-colors hover:text-gold">
+              Sobre
             </a>
           </nav>
           <a
@@ -305,6 +321,29 @@ export default function App() {
                 </li>
               ))}
             </ol>
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="sobre" className="relative py-20 sm:py-28">
+        <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-2 lg:items-center">
+          <Reveal>
+            <span className="text-[11px] uppercase tracking-[0.34em] text-gold">Sobre mim</span>
+            <div className="mt-6 flex items-center gap-5">
+              <img
+                src={perfil}
+                alt="Dra. Juliane Klobukoski"
+                className="h-20 w-20 shrink-0 rounded-full border border-gold/40 object-cover object-top"
+              />
+              <h2 className="text-2xl font-semibold leading-tight sm:text-4xl">Dra. Juliane Klobukoski</h2>
+            </div>
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+              Em breve, mais sobre a minha trajetória por aqui.
+            </p>
+          </Reveal>
+
+          <Reveal>
+            <Slideshow images={sobreImages} className="aspect-[4/5] w-full sm:aspect-[16/10]" />
           </Reveal>
         </div>
       </section>
